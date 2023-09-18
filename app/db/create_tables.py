@@ -12,7 +12,7 @@ def create_tables():
             password character varying(100) NOT NULL,
             email character varying(50) NOT NULL,
             name character varying(50) NOT NULL,
-            rol_id integer NOT NULL,
+            role_id integer NOT NULL,
             CONSTRAINT pk_user PRIMARY KEY (user_id)
         );
 
