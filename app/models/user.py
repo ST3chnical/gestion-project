@@ -7,4 +7,4 @@ class User(BaseModel):
     password: str
     email: str
     name: str
-    rol_id: int
+    role_id: int

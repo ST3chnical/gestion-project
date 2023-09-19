@@ -7,15 +7,16 @@ from strawberry.asgi import GraphQL
 from app.db.config import config_database
 from app.api.user import UserMutation, UserQuery
 from app.api.login import LoginMutation
+from app.api.projects import ProjectMutation, ProjectQuery
 
 
 @strawberry.type
-class Mutation(UserMutation, LoginMutation):
+class Mutation(UserMutation, LoginMutation, ProjectMutation):
     ...
 
 
 @strawberry.type
-class Query(UserQuery):
+class Query(UserQuery, ProjectQuery):
     ...
 
 

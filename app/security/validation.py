@@ -9,14 +9,14 @@ def is_user_admin(token: str) -> bool:
     try:
         with get_database_connection() as connection:
             with connection.cursor() as cursor:
-                cursor.execute("SELECT rol_id FROM users WHERE user_id = %s;", (user_id,))
+                cursor.execute("SELECT role_id FROM users WHERE user_id = %s;", (user_id,))
                 user_data = cursor.fetchone()
 
                 if not user_data:
                     return False
-                rol_id = user_data[0]
+                role_id = user_data[0]
 
-                return rol_id == 1
+                return role_id == 1
 
     except psycopg2.Error as e:
         print(f"Error al consultar la base de datos: {e}")
@@ -41,7 +41,7 @@ def get_user_by_email(email: str) -> User:
                     password=password,
                     email=email,
                     name=name,
-                    rol_id=role_id
+                    role_id=role_id
                 )
 
     except psycopg2.Error as e:

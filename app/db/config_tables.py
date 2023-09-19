@@ -26,7 +26,7 @@ def foreign_keys():
     connection = get_database_connection()
     cursor = connection.cursor()
 
-    add_foreign_key(cursor, 'fk_user_role', 'users', 'rol_id', 'roles', 'role_id')
+    add_foreign_key(cursor, 'fk_user_role', 'users', 'role_id', 'roles', 'role_id')
     add_foreign_key(cursor, 'fk_responsible_user', 'projects', 'responsible_id', 'users', 'user_id')
     add_foreign_key(cursor, 'fk_project_task', 'tasks', 'project_id', 'projects', 'project_id')
     add_foreign_key(cursor, 'fk_responsible_task', 'tasks', 'responsible_id', 'users', 'user_id')

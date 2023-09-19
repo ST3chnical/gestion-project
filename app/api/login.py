@@ -3,19 +3,7 @@ from fastapi import HTTPException, status
 from app.security.hash import verify_password
 from app.security.token import create_access_token
 from app.security.validation import get_user_by_email
-
-
-@strawberry.input
-class Login:
-    email: str
-    password: str
-
-
-@strawberry.type
-class LoginResponse:
-    success: bool
-    message: str
-    token: str
+from app.utils.login_utils import Login, LoginResponse
 
 
 @strawberry.type
