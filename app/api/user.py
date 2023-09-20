@@ -80,8 +80,7 @@ class UserMutation:
                             "INSERT INTO users (username, password, email, name, role_id) VALUES (%s, %s, %s, %s, %s);",
                             (user.username, hashed_password, user.email, user.name, user.role_id))
                         connection.commit()
-                        user_id = cursor.lastrowid
-                        return UserResponse(success=True, message=f"User {user_id} created")
+                        return UserResponse(success=True, message=f"User created")
 
             except IntegrityError as e:
                 if "unique constraint" in str(e):

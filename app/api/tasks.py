@@ -76,16 +76,19 @@ class TaskMutation:
         if not is_user_admin(token):
             raise HTTPException(status_code=401, detail="Unauthorized")
 
-        with get_database_connection() as connection, connection.cursor() as cursor:
-            try:
+        try:
+            with get_database_connection() as connection, connection.cursor() as cursor:
                 cursor.execute("INSERT INTO tasks (task_name, task_description, deadline, task_status,"
                                " project_id, responsible_id) VALUES (%s, %s, %s, %s, %s, %s);",
                                (task_data.task_name, task_data.task_description, task_data.deadline,
                                 task_data.task_status, task_data.project_id, task_data.responsible_id))
-            except IntegrityError:
-                raise HTTPException(status_code=400, detail="Invalid data")
-
-        return TasksResponse(success=True, message="Task created successfully")
+                connection.commit()
+                return TasksResponse(success=True, message=f"Task created successfully")
+        except IntegrityError as e:
+            if "unique constraint" in str(e):
+                raise HTTPException(status_code=409, detail="Task already exists")
+            else:
+                raise HTTPException(status_code=500, detail="Error creating task")
 
     @strawberry.mutation
     def update_task(self, info: Info, _input: TasksUpdateInput) -> TasksResponse:

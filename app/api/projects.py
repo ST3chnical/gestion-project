@@ -98,8 +98,7 @@ class ProjectMutation:
                                (project.project_name, project.project_description, project.start_date,
                                 project.end_date, project.responsible_id))
                 connection.commit()
-                project_id = cursor.lastrowid
-                return ProjectResponse(success=True, message=f"Project {project_id} created")
+                return ProjectResponse(success=True, message=f"Project created")
         except IntegrityError as e:
             if "unique constraint" in str(e):
                 raise HTTPException(status_code=409, detail="Project already exists")

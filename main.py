@@ -9,15 +9,16 @@ from app.api.user import UserMutation, UserQuery
 from app.api.login import LoginMutation
 from app.api.projects import ProjectMutation, ProjectQuery
 from app.api.tasks import TaskMutation, TaskQuery
+from app.api.comments import CommentMutation, CommentQuery
 
 
 @strawberry.type
-class Mutation(UserMutation, LoginMutation, ProjectMutation, TaskMutation):
+class Mutation(UserMutation, LoginMutation, ProjectMutation, TaskMutation, CommentMutation):
     ...
 
 
 @strawberry.type
-class Query(UserQuery, ProjectQuery, TaskQuery):
+class Query(UserQuery, ProjectQuery, TaskQuery, CommentQuery):
     ...
 
 
