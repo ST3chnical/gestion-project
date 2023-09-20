@@ -30,7 +30,6 @@ class UserResponse:
 
 @strawberry.input
 class UserInputCreate:
-    user_id: Optional[int] = None
     username: str
     password: str
     email: str

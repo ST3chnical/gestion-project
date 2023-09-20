@@ -52,7 +52,7 @@ def create_tables():
             task_id serial,
             task_name character varying(50) NOT NULL,
             task_description character varying(255) NOT NULL,
-            deadline date NOT NULL,
+            deadline date,
             task_status character varying(50) NOT NULL,
             project_id integer NOT NULL,
             responsible_id integer NOT NULL,

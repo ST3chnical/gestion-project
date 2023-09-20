@@ -8,15 +8,16 @@ from app.db.config import config_database
 from app.api.user import UserMutation, UserQuery
 from app.api.login import LoginMutation
 from app.api.projects import ProjectMutation, ProjectQuery
+from app.api.tasks import TaskMutation, TaskQuery
 
 
 @strawberry.type
-class Mutation(UserMutation, LoginMutation, ProjectMutation):
+class Mutation(UserMutation, LoginMutation, ProjectMutation, TaskMutation):
     ...
 
 
 @strawberry.type
-class Query(UserQuery, ProjectQuery):
+class Query(UserQuery, ProjectQuery, TaskQuery):
     ...
 
 

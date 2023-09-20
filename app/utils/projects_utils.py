@@ -1,5 +1,5 @@
 import strawberry
-from typing import Optional, Union
+from typing import Optional
 from datetime import datetime
 
 current_time = datetime.now().strftime("%Y-%m-%d")
@@ -23,7 +23,6 @@ class ProjectResponse:
 
 @strawberry.input
 class ProjectInputCreate:
-    project_id: Optional[int] = None
     project_name: str
     project_description: str
     start_date: Optional[str] = current_time
