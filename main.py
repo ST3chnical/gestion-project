@@ -29,12 +29,11 @@ schema = strawberry.Schema(
     query=Query
 )
 
-
 graphql_app = GraphQL(schema)
 
 app.add_route('/graphql', graphql_app)
 
-
 if __name__ == "__main__":
     config_database()
-    uvicorn.run("main:app", host="localhost", port=8000, reload=True)
+    # uvicorn.run("main:app", host="localhost", port=8000, reload=True)
+    uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -6,7 +6,7 @@ def get_database_connection():
         dbname="postgres",
         user="postgres",
         password="postgres",
-        host="localhost",
+        host="db",
         port="5432"
     )
 
